@@ -1,13 +1,13 @@
 const knex = require('../DB/index')
 
-class Productos {
-    constructor(id, title, price, image){
-        this.id = id,
-        this.title = title,
-        this.price = price,
-        this.image = image
-    }        
-}
+// class Productos {
+//     constructor(id, title, price, image){
+//         this.id = id,
+//         this.title = title,
+//         this.price = price,
+//         this.image = image
+//     }        
+// }
 
 module.exports = {
     async list(req,res) {
@@ -63,7 +63,7 @@ module.exports = {
         }
         
     },
-    Productos
+    /*Productos*/
 
 }
 

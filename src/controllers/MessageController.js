@@ -1,15 +1,15 @@
 const { options } = require('../../options/mariaDB');
 const knex = require('knex')(options); 
 
-class Mensajes {
-    constructor(id, email, fecha, mensaje){
-        this.id = id,
-        this.email = email,
-        this.fecha = fecha,
-        this.mensaje = mensaje
+// class Mensajes {
+//     constructor(id, email, fecha, mensaje){
+//         this.id = id,
+//         this.email = email,
+//         this.fecha = fecha,
+//         this.mensaje = mensaje
         
-    }        
-}
+//     }        
+// }
 
 module.exports = {
     async list(req,res) {
@@ -65,6 +65,6 @@ module.exports = {
         }
         
     },
-    Mensajes
+    /*Mensajes*/
 
 }
