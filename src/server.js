@@ -1,21 +1,35 @@
-const express  = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
-const routes = require('./routes/routes')
+app.use(express.json());
 
-app.use(express.json())
-app.use(routes)
+
+/* Configuracion de las rutas */
+const mensajeRouter = require('./routes/mensajes');
+const productoRouter = require('./routes/productos');
+app.use('/api', mensajeRouter);
+app.use('/api', productoRouter);
+
 
 //NotFOund
 app.use((req, res, next) => {
     const error = new Error('Pagina no Encontrada')
-    error.status = 404
+    error.mensaje = "Ruta no implementada"
     next(error)
 })
 
-app.use((error, req, res, next) => {
-    res.status(error.status || 500)
-    res.json({error: error.message})
-})
+/* En caso de una excepcion */
+app.use((err, req, res, next) => {
+    console.error(err.message);
+    res.status(500).send(err);
+});
 
-app.listen(8080, () => console.log('El servidor esta corriendo en localhost:8080'))
+// Servidor escucando en el puerto
+const server = app.listen(8080, () => {
+    console.log(`servidor escuchando en http://localhost:8080`);
+});
+
+// En Caso de error 
+server.on('error', error => {
+    console.log('error en el servidor:', error);
+});
