@@ -3,7 +3,7 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
-module.exports = {
+ module.exports = {
 
   development: {
     client: 'sqlite3',
@@ -15,5 +15,16 @@ module.exports = {
       directory: `${__dirname}/src/DB/migrations`
     },
     useNullAsDefault: true
+  },
+  mysql: {
+    client: 'mysql',
+    connection: {
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'ecommerce1'
+    },
+    pool: { min: 0, max: 7 }
   }
+
 };
